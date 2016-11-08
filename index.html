@@ -1,0 +1,46 @@
+<!--XardoniK-->
+<!DOCTYPE html>
+<html lang="en" ng-app="ToDo">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo AngularJS</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="allList" class="container" ng-controller="ListsCtrl">
+
+    <div id="list_{{$index}}" class="col-md-12 h1-responsive list-panel" ng-repeat="list in data.lists">
+        <div class="col-md-12 h1-responsive">{{ list.title }}</div>
+        <!--<button class="btn btn-danger" ng-click="ListRemove(list.id)">X</button>-->
+        <div class="md-form">
+            <input type="text" class="form-control" placeholder="Dodaj jeden task lub wiele po ;" ng-model="$root.newName" ng-keyup="$event.keyCode == 13 && AddTask()">
+        </div>
+        <div class="col-md-12 tasks_{{$index}}" ng-repeat="task in list.tasks">
+            <div id="task_{{$index}}" class="col-md-12">
+                <div class="col-md-10">
+                    {{ task.name }}
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger" ng-click="TaskRemove($index)">X</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/jcs-auto-validate.min.js"></script>
+<script src="js/tether.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/mdb.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="65953873-153c-46f3-b18c-8b0a0a56e5cb" name="digital_ocean" url="http://46.101.110.236">
+        <fileTransfer host="46.101.110.236" port="22" rootFolder="/var/www/html/todo" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -14,7 +14,6 @@
 <div id="allList" class="container" ng-controller="ListsCtrl">
     <div class="col-xs-12 col-md-12">
         <button class="btn btn-warning btn-block" ng-click="editTasks ? editTasks=false : editTasks=true">Edycja wpisancyh tasków</button>
-
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Wpisz nazwe i ENTER"
                    ng-model="$root.createdTaskName"
@@ -39,7 +38,6 @@
                             ng-show="!editingTask"
                             ng-click="modifyTask(taskIndex, task.id, this)">
                         <i class="fa fa-pencil left"></i>
-                        EDIT
                     </button>
                     <button class="btn btn-success"
                             ng-show="editingTask"

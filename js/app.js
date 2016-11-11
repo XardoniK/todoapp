@@ -75,7 +75,7 @@ app.controller('ListsCtrl', function ($scope, $rootScope, TaskService) {
             element.editingTask = true;
             $scope.backupName = $scope.data[index].name;
             $scope.backupElement = element;
-            $("#name_" + index).focus();
+            $("#name_" + index).click().trigger('focus');
 
         }
 

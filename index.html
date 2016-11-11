@@ -1,45 +1,63 @@
 <!--XardoniK-->
 <!DOCTYPE html>
-<html lang="en" ng-app="ToDo">
+<html lang="en" ng-app="toDo">
 <head>
     <meta charset="UTF-8">
     <title>ToDo AngularJS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/mdb.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div id="allList" class="container" ng-controller="ListsCtrl">
+    <div class="col-xs-12 col-md-12">
+        <button class="btn btn-warning btn-block" ng-click="editTasks ? editTasks=false : editTasks=true">Edycja wpisancyh tasków</button>
 
-    <div id="list_{{$index}}" class="col-md-12 h1-responsive list-panel" ng-repeat="list in data.lists">
-        <div class="col-md-12 h1-responsive">{{ list.title }}</div>
-        <!--<button class="btn btn-danger" ng-click="ListRemove(list.id)">X</button>-->
-        <div class="md-form">
-            <input type="text" class="form-control" placeholder="Dodaj jeden task lub wiele po ;" ng-model="$root.newName" ng-keyup="$event.keyCode == 13 && AddTask()">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Wpisz nazwe i ENTER"
+                   ng-model="$root.createdTaskName"
+                   ng-keyup="$event.keyCode == 13 && createTask()">
         </div>
-        <div class="col-md-12 tasks_{{$index}}" ng-repeat="task in list.tasks">
-            <div id="task_{{$index}}" class="col-md-12">
-                <div class="col-md-10">
-                    {{ task.name }}
+
+        <div class="form-group" ng-repeat="(taskIndex, task) in data">
+            <div class="input-group">
+                <div class="input-group-btn"  ng-show="editTasks">
+                    <button class="btn btn-danger" ng-click="removeTask(taskIndex, task.id)">
+                        <i class="fa fa-remove"></i>
+                    </button>
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-danger" ng-click="TaskRemove($index)">X</button>
+                <input id="name_{{taskIndex}}"
+                       type="text"
+                       class="form-control task-name"
+                       value="{{ task.name }}"
+                       ng-readonly="!editingTask"
+                       ng-model="data[taskIndex].name">
+                <div class="input-group-btn" ng-show="editTasks">
+                    <button class="btn btn-primary"
+                            ng-show="!editingTask"
+                            ng-click="modifyTask(taskIndex, task.id, this)">
+                        <i class="fa fa-pencil left"></i>
+                        EDIT
+                    </button>
+                    <button class="btn btn-success"
+                            ng-show="editingTask"
+                            ng-click="modifyTask(taskIndex, task.id, this)">
+                        <i class="fa fa-check left"></i>
+                    </button>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="js/angular.min.js"></script>
-<script src="js/jcs-auto-validate.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/mdb.min.js"></script>
 <script src="js/app.js"></script>
 
 </body>

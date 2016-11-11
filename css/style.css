@@ -8,3 +8,13 @@
     /*align-self: center;*/
     /*flex-grow: 1;*/
 /*}*/
+
+.task-name:read-only {
+    border-color: transparent !important;
+    color: rgba(0,0,0,1) !important;
+    user-select: none;
+}
+
+.form-control[readonly] {
+    border-color: #eceeef !important;
+}
